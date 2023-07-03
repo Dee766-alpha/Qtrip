@@ -16,6 +16,7 @@ application {
 }
 
 dependencies {
+
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-1'
     testImplementation group: 'org.testng', name: 'testng', version: '7.6.0'
 
@@ -43,6 +44,7 @@ test.dependsOn startScript
 test {
     useTestNG() {
         useDefaultListeners = true // generates the test report
+        suites "src/test/java/qtriptest/testng.xml"
     }
 
     afterSuite { desc, result ->
