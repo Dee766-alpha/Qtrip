@@ -16,7 +16,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 public class testCase_04 {
-    @Test(dataProvider = "data-provider",dataProviderClass = DP.class)
+    @Test(description="verify booking for multiple adventures",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 4,groups = {"Reliability Flow"})
     //copy code of testcase1 and paste
     public void TestCase_04(String username,String password,String dataset1,String dataset2,String dataset3) throws MalformedURLException, InterruptedException{
     //RemoteWebDriver driver=DriverSingleton.getDriver();

@@ -12,9 +12,10 @@ import java.net.MalformedURLException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
 public class testCase_03 {
-    @Test(dataProvider = "data-provider",dataProviderClass = DP.class)
+    @Test(description="verify booking and cancelation working ",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 3,groups = {"Booking and Cancellation Flow"})
     //copy code of testcase1 and paste
     public void TestCase_03(String username,String password,String city,String ad,String advname,String date,String numberofperson) throws MalformedURLException, InterruptedException{
     //RemoteWebDriver driver=DriverSingleton.getDriver();
@@ -54,9 +55,11 @@ Thread.sleep(2000);
 //call method getReservations  with history page object -->store it in int variable
 int count =hp.getReservation();
 //call method cancelReservations with historypage object
+assertEquals(count,1,"not matched");
 hp.cancelReservation(ad);
 driver. navigate().refresh();
 int getreserve=hp.getReservation();
+assertEquals(getreserve,0,"not matched");
 page2.logOutUser();
 //driver. Navigate().refresh();
 //call getReservations method with history object --> Store it in int variable
