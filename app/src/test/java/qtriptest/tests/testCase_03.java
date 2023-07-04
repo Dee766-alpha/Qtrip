@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 public class testCase_03 {
     @Test(description="verify booking and cancelation working ",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 3,groups = {"Booking and Cancellation Flow"})
     //copy code of testcase1 and paste
-    public void TestCase_03(String username,String password,String city,String ad,String advname,String date,String numberofperson) throws MalformedURLException, InterruptedException{
+    public void TestCase03(String username,String password,String city,String ad,String advname,String date,String numberofperson) throws MalformedURLException, InterruptedException{
     //RemoteWebDriver driver=DriverSingleton.getDriver();
     boolean status;
      RemoteWebDriver driver=DriverSingleton.getDriver();

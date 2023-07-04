@@ -15,16 +15,16 @@ public class DP {
     public Object[][] dpMethod (Method m) throws IOException{
         switch(m.getName())
         {
-            case "TestCase_01" :
+            case "TestCase01" :
                 Object[][] testCase1 = readCompleteExcel(System.getProperty("user.dir") + "/src/test/resources/DatasetsforQTrip.xlsx", "TestCase01");
                 return testCase1;    
-            case "TestCase_02" :
+            case "TestCase02" :
                 Object[][] testCase2 = readCompleteExcel(System.getProperty("user.dir") + "/src/test/resources/DatasetsforQTrip.xlsx", "TestCase02");
                 return testCase2;
-            case "TestCase_03" :
+            case "TestCase03" :
                 Object[][] testCase3 = readCompleteExcel(System.getProperty("user.dir") + "/src/test/resources/DatasetsforQTrip.xlsx", "TestCase03");
                 return testCase3;
-            case "TestCase_04" :
+            case "TestCase04" :
                 Object[][] testCase4 = readCompleteExcel(System.getProperty("user.dir") + "/src/test/resources/DatasetsforQTrip.xlsx", "TestCase04");
                 return testCase4;
        }

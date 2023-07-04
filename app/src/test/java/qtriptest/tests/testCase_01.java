@@ -63,7 +63,7 @@ public class testCase_01 {
     //public static RemoteWebDriver driver;
     @Test(description="Register the user and login with that",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 1,groups = {"Login Flow"})
     
-    public void TestCase_01(String username,String password) throws InterruptedException, MalformedURLException{
+    public void TestCase01(String username,String password) throws InterruptedException, MalformedURLException{
         boolean status;
      RemoteWebDriver driver=DriverSingleton.getDriver();
      RegisterPage register=new RegisterPage();

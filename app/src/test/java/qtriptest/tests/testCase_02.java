@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class testCase_02 {
     @Test(description="Select the adventure(search and filter is working fine)",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 2,groups = {"Search and Filter flow"})
-    public void TestCase_02(String city,String categoryvalue,String filtervalue ,String expectedfilterresult,String expectedunfilterresult) throws MalformedURLException, InterruptedException{
+    public void TestCase02(String city,String categoryvalue,String filtervalue ,String expectedfilterresult,String expectedunfilterresult) throws MalformedURLException, InterruptedException{
         RemoteWebDriver driver=DriverSingleton.getDriver();
         //create object for homepage
         HomePage page1=new HomePage(driver);
