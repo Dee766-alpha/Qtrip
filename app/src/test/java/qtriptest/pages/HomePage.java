@@ -37,7 +37,7 @@ public class HomePage {
     public void searchCity(String city) throws InterruptedException{
         
         driver.findElement(By.xpath("//input[@id='autocomplete']")).sendKeys(city);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     
        
     }
