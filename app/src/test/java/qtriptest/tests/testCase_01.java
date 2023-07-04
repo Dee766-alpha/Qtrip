@@ -79,9 +79,7 @@ status=homepage.isUserLoggedIn();
 Thread.sleep(1000);
 assertTrue(status,"not login");
 homepage.logOutUser();
-
-    }
-    
+    }    
     
     
 }
