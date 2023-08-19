@@ -2,11 +2,13 @@ package qtriptest.tests;
 
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
 import java.net.MalformedURLException;
 import java.net.URL;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -64,6 +66,8 @@ public class testCase_01 {
     @Test(description="Register the user and login with that",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 1,groups = {"Login Flow"})
     
     public void TestCase01(String username,String password) throws InterruptedException, MalformedURLException{
+        ReportSingleton.test = ReportSingleton.reports.startTest("verify the user is register successfully");
+        //ReportSingleton.test.log(LogStatus.PASS, "Successfully verified that the user is loggedout");
         boolean status;
      RemoteWebDriver driver=DriverSingleton.getDriver();
      RegisterPage register=new RegisterPage();
@@ -79,6 +83,7 @@ status=homepage.isUserLoggedIn();
 Thread.sleep(1000);
 assertTrue(status,"not login");
 homepage.logOutUser();
+ReportSingleton.test.log(LogStatus.PASS, "Successfully verified that the user is loggedout");
     }    
     
     

@@ -7,14 +7,18 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HistoryPage {
     
    
     String url = "https://qtripdynamic-qa-frontend.vercel.app/pages/adventures/reservations/";
     public RemoteWebDriver driver;
+    
     public HistoryPage(RemoteWebDriver driver) throws MalformedURLException {
         this.driver=DriverSingleton.getDriver();
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
         driver.get("https://qtripdynamic-qa-frontend.vercel.app/pages/adventures/reservations/");
     }
 
@@ -29,7 +33,8 @@ public class HistoryPage {
     public void  cancelReservation(String cancel) throws InterruptedException{
         //driver.findElement(By.xpath("//button[@onclick='cancelReservation(this)']")).se
         WebElement cancelbutton=driver.findElement(By.xpath("//button[@onclick='cancelReservation(this)']"));
-        List<WebElement>list4 =driver.findElements(By.xpath("//tbody[@id='reservation-table']/tr/td[2]"));
+        try{
+            List<WebElement>list4 =driver.findElements(By.xpath("//tbody[@id='reservation-table']/tr/td[2]"));
         for(WebElement list5:list4){
             Thread.sleep(1000);
             if(list5.getText().equals(cancel)){
@@ -42,6 +47,11 @@ public class HistoryPage {
             }
         
         }
+    }
+    catch(Exception in){
+        driver.switchTo().alert().accept();
+
+    }
 
 
     }

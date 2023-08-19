@@ -1,15 +1,18 @@
 package qtriptest.tests;
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.AdventureDetailsPage;
 import qtriptest.pages.AdventurePage;
 import qtriptest.pages.HistoryPage;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.List;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -18,8 +21,9 @@ import static org.testng.Assert.assertEquals;
 public class testCase_04 {
     @Test(description="verify booking for multiple adventures",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 4,groups = {"Reliability Flow"})
     //copy code of testcase1 and paste
-    public void TestCase04(String username,String password,String dataset1,String dataset2,String dataset3) throws MalformedURLException, InterruptedException{
+    public void TestCase04(String username,String password,String dataset1,String dataset2,String dataset3) throws InterruptedException, IOException{
     //RemoteWebDriver driver=DriverSingleton.getDriver();
+    ReportSingleton.test = ReportSingleton.reports.startTest("verify booking for multiple adventures");
     boolean status;
      RemoteWebDriver driver=DriverSingleton.getDriver();
      List<String> datasetlist1=Arrays.asList(dataset1.split(";"));
@@ -89,6 +93,7 @@ Thread.sleep(2000);
 //call method getReservations  with history page object -->store it in int variable
 int count =hp.getReservation();
 assertEquals(count,3,"actual count and expected count not matched");
+ReportSingleton.test.log(LogStatus.PASS,ReportSingleton.test.addScreenCapture(ReportSingleton.capture(driver)) ,"Successfully verify booking for multiple adventures");
 //call method cancelReservations with historypage object
 //hp.cancelReservation(ad);
 driver. navigate().refresh();

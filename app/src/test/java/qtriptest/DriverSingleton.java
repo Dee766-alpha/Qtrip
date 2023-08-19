@@ -21,7 +21,7 @@ public class DriverSingleton {
             driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"),capabilities);
             driver.get("https://qtripdynamic-qa-frontend.vercel.app/");
             driver.manage().window().maximize();
-           // ReportSingleton.setExtentReport();
+            ReportSingleton.setExtentReport();
             
         }
         return driver;      
@@ -37,7 +37,7 @@ public class DriverSingleton {
     @AfterTest
     public void quitDriver()
     {
-       // ReportSingleton.endExtentReport();
+        ReportSingleton.endExtentReport();
         driver.quit();
     }
     

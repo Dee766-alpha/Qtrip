@@ -2,13 +2,16 @@ package qtriptest.tests;
 
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.AdventureDetailsPage;
 import qtriptest.pages.AdventurePage;
 import qtriptest.pages.HistoryPage;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -17,8 +20,9 @@ import static org.testng.Assert.assertEquals;
 public class testCase_03 {
     @Test(description="verify booking and cancelation working ",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 3,groups = {"Booking and Cancellation Flow"})
     //copy code of testcase1 and paste
-    public void TestCase03(String username,String password,String city,String ad,String advname,String date,String numberofperson) throws MalformedURLException, InterruptedException{
+    public void TestCase03(String username,String password,String city,String ad,String advname,String date,String numberofperson) throws InterruptedException, IOException{
     //RemoteWebDriver driver=DriverSingleton.getDriver();
+    ReportSingleton.test = ReportSingleton.reports.startTest("verifybooking and cancellation working fine ");
     boolean status;
      RemoteWebDriver driver=DriverSingleton.getDriver();
      RegisterPage register=new RegisterPage();
@@ -60,9 +64,11 @@ hp.cancelReservation(ad);
 driver. navigate().refresh();
 int getreserve=hp.getReservation();
 assertEquals(getreserve,0,"not matched");
+ReportSingleton.test.log(LogStatus.PASS,ReportSingleton.test.addScreenCapture(ReportSingleton.capture(driver)) ,"Successfully verify that booking and cancelation working");
 page2.logOutUser();
 //driver. Navigate().refresh();
 //call getReservations method with history object --> Store it in int variable
 //call loggedoutuser method with homepage object
+
 }
 }

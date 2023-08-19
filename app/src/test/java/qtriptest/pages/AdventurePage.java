@@ -1,24 +1,38 @@
 package qtriptest.pages;
 
 import qtriptest.DriverSingleton;
+import qtriptest.SeleniumWrapper;
 import java.net.MalformedURLException;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class AdventurePage {
     //String url = "https://qtripdynamic-qa-frontend.vercel.app/pages/adventures/?city=goa";
+    @FindBy(xpath="//select[@id='duration-select']")
+    WebElement filteroptions;
+
+    @FindBy(xpath="//select[@id='category-select']")
+    WebElement categoryoptions;
+
+   
+
     public RemoteWebDriver driver;
     public AdventurePage(RemoteWebDriver driver) throws MalformedURLException {
         this.driver=DriverSingleton.getDriver();
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
 
     public void setFilterValue(String filterValue) throws InterruptedException{
         ////select[@id='duration-select']/option
-        driver.findElement(By.xpath("//select[@id='duration-select']")).click();
+        //driver.findElement(By.xpath("//select[@id='duration-select']")).click();
+        SeleniumWrapper.click(filteroptions, driver);
         Thread.sleep(1000);
         List<WebElement> FilterValueList = driver.findElements(By.xpath("//select[@id='duration-select']/option"));
         for(WebElement val : FilterValueList)
@@ -38,7 +52,8 @@ public class AdventurePage {
     }
 
     public void categoryValue(String category) throws InterruptedException{
-        driver.findElement(By.xpath("//select[@id='category-select']")).click();
+        //driver.findElement(By.xpath("//select[@id='category-select']")).click();
+        SeleniumWrapper.click(categoryoptions, driver);
         Thread.sleep(1000);
         List<WebElement> categoryOption = driver.findElements(By.xpath("//select[@id='category-select']/option"));
         for(WebElement cat : categoryOption)
@@ -60,6 +75,7 @@ public class AdventurePage {
     public int getResultCount() throws InterruptedException{
         Thread.sleep(2000);
         List<WebElement> list2=driver.findElements(By.xpath("//div[@id='data']/div"));
+        //List<WebElement> list2=SeleniumWrapper.getresultcount;
         Thread.sleep(2000);
         return list2.size();
         
