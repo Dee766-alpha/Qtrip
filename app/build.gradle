@@ -45,6 +45,7 @@ dependencies {
 test {
     useTestNG() {
         useDefaultListeners = true // generates the test report
+        suites "src/test/java/qtriptest/testng.xml"
     
     }
 
