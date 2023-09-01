@@ -4,6 +4,7 @@ import qtriptest.DriverSingleton;
 import qtriptest.SeleniumWrapper;
 import java.net.MalformedURLException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -20,10 +21,10 @@ public class HomePage {
     @FindBy(xpath="//ul[@id='results']")
     WebElement selecityElement;
 
-    RemoteWebDriver driver;
+    WebDriver driver;
     String url = "https://qtripdynamic-qa-frontend.vercel.app/";
 
-    public HomePage(RemoteWebDriver driver) throws MalformedURLException {
+    public HomePage(WebDriver driver) throws MalformedURLException {
         this.driver=DriverSingleton.getDriver();
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
         //driver.get("https://qtripdynamic-qa-frontend.vercel.app/");

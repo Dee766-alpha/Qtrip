@@ -13,6 +13,8 @@ import java.net.MalformedURLException;
 import java.util.Arrays;
 import java.util.List;
 import com.relevantcodes.extentreports.LogStatus;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -25,7 +27,7 @@ public class testCase_04 {
     //RemoteWebDriver driver=DriverSingleton.getDriver();
     ReportSingleton.test = ReportSingleton.reports.startTest("verify booking for multiple adventures");
     boolean status;
-     RemoteWebDriver driver=DriverSingleton.getDriver();
+    WebDriver driver=DriverSingleton.getDriver();
      List<String> datasetlist1=Arrays.asList(dataset1.split(";"));
      List<String> datasetlist2=Arrays.asList(dataset2.split(";"));
      List<String> datasetlist3=Arrays.asList(dataset3.split(";"));

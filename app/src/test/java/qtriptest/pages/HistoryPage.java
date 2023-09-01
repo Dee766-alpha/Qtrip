@@ -5,6 +5,7 @@ import qtriptest.DriverSingleton;
 import java.net.MalformedURLException;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,9 +15,9 @@ public class HistoryPage {
     
    
     String url = "https://qtripdynamic-qa-frontend.vercel.app/pages/adventures/reservations/";
-    public RemoteWebDriver driver;
+ WebDriver driver;
     
-    public HistoryPage(RemoteWebDriver driver) throws MalformedURLException {
+    public HistoryPage(WebDriver driver) throws MalformedURLException {
         this.driver=DriverSingleton.getDriver();
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
         driver.get("https://qtripdynamic-qa-frontend.vercel.app/pages/adventures/reservations/");
@@ -42,7 +43,7 @@ public class HistoryPage {
                 cancelbutton.click();
                 Thread.sleep(1000);
                 //driver.switchTo().alert().accept();
-                break;
+             break;
 
             }
         

@@ -34,6 +34,7 @@ public class ReportSingleton {
         String errflpath = Dest.getAbsolutePath();
         FileUtils.copyFile(scrFile, Dest);
         return errflpath;
+        
     }
     
     public static void endExtentReport()

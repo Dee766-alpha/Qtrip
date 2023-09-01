@@ -9,6 +9,8 @@ import qtriptest.pages.RegisterPage;
 import java.net.MalformedURLException;
 import java.net.URL;
 import com.relevantcodes.extentreports.LogStatus;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -69,7 +71,7 @@ public class testCase_01 {
         ReportSingleton.test = ReportSingleton.reports.startTest("verify the user is register successfully");
         //ReportSingleton.test.log(LogStatus.PASS, "Successfully verified that the user is loggedout");
         boolean status;
-     RemoteWebDriver driver=DriverSingleton.getDriver();
+    WebDriver driver=DriverSingleton.getDriver();
      RegisterPage register=new RegisterPage();
     status=register.registerNewPage(username,password,true);
 

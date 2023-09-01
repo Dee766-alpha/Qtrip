@@ -116,6 +116,8 @@ WebDriverWait wait = new WebDriverWait(driver, 5);
         return this.driver.getCurrentUrl().endsWith("/login");
 //return true;
 
-    }
+    
+}
+
     
 }

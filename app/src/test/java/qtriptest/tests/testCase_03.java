@@ -12,6 +12,8 @@ import qtriptest.pages.RegisterPage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import com.relevantcodes.extentreports.LogStatus;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -24,7 +26,7 @@ public class testCase_03 {
     //RemoteWebDriver driver=DriverSingleton.getDriver();
     ReportSingleton.test = ReportSingleton.reports.startTest("verifybooking and cancellation working fine ");
     boolean status;
-     RemoteWebDriver driver=DriverSingleton.getDriver();
+     WebDriver driver=DriverSingleton.getDriver();
      RegisterPage register=new RegisterPage();
     status=register.registerNewPage(username,password,true);
 

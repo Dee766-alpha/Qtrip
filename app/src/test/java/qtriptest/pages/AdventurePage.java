@@ -5,6 +5,8 @@ import qtriptest.SeleniumWrapper;
 import java.net.MalformedURLException;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
@@ -23,8 +25,8 @@ public class AdventurePage {
 
    
 
-    public RemoteWebDriver driver;
-    public AdventurePage(RemoteWebDriver driver) throws MalformedURLException {
+     WebDriver driver;
+    public AdventurePage(WebDriver driver) throws MalformedURLException {
         this.driver=DriverSingleton.getDriver();
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
@@ -88,13 +90,19 @@ public class AdventurePage {
         // categoryOption.click();
         List<WebElement> list3=driver.findElements(By.xpath("//div[@class='activity-card']/div/div[1]/h5"));
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         for(WebElement value1:list3){
+               js.executeScript("arguments[0].scrollIntoView();", value1);
+               Thread.sleep(2000);
             if(value1.getText().equals(adventurename)){
                 value1.click();
-                Thread.sleep(1000);
+                 Thread.sleep(2000);
+
+                
                 break;
             }
         }
+     
          
 
         

@@ -11,6 +11,7 @@ import java.sql.Driver;
 import java.util.List;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ public class testCase_02 {
     @Test(description="Select the adventure(search and filter is working fine)",dataProvider = "data-provider",dataProviderClass = DP.class,priority = 2,groups = {"Search and Filter flow"})
     public void TestCase02(String city,String categoryvalue,String filtervalue ,String expectedfilterresult,String expectedunfilterresult) throws InterruptedException, IOException{
         ReportSingleton.test = ReportSingleton.reports.startTest("verify thesearch and filter working fine");
-        RemoteWebDriver driver=DriverSingleton.getDriver();
+        WebDriver driver=DriverSingleton.getDriver();
         //create object for homepage
         HomePage page1=new HomePage(driver);
         //call method searchcity with homepage object

@@ -17,7 +17,6 @@
 <message>Regression test for QTrip</message>
 </reportName>
 <!-- <!–locationofchartsinthetestview–>  -->
-<!-- <!–top,bottom–> -->
 <testViewChartLocation>bottom</testViewChartLocation>
 </configuration>
 </extentreports>
